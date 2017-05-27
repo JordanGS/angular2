@@ -10,6 +10,7 @@ import {NgbModal, NgbActiveModal, ModalDismissReasons} from '@ng-bootstrap/ng-bo
 })
 export class HeroModalContent {
   @Input() name;
+  @Input() hero: Hero;
 
   constructor(public activeModal: NgbActiveModal) {}
 }
@@ -21,12 +22,14 @@ export class HeroModalContent {
 })
 export class HeroModalComponent {
   @Input() hero: Hero;
+
   closeResult: string;
   constructor(private modalService: NgbModal) {}
 
   open() {
     const modalRef = this.modalService.open(HeroModalContent, { windowClass: 'dark-modal' });
-    modalRef.componentInstance.name = 'EN';
+    modalRef.componentInstance.name = 'FR';
+    modalRef.componentInstance.hero = this.hero;
     modalRef.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
