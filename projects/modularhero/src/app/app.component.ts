@@ -19,12 +19,12 @@ import { HeroService } from './hero.service';
   </div>
   -->
   <h2>My Heroes</h2>
-  <ul class="heroes">
-    <li *ngFor="let hero of heroes" 
+  <ul>
+    <li style="list-style: none; padding-top: 3px;" *ngFor="let hero of heroes" 
       [class.selected]="hero === selectedHero"
       (click)="onSelect(hero)">
-      <hero-modal [hero]="selectedHero"></hero-modal>
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
+      <hero-modal [hero]="hero"></hero-modal>
+      <!--<span class="badge">{{hero.id}}</span> {{hero.name}}-->
     </li>
   </ul>
   <!--
